@@ -8,6 +8,8 @@ namespace PhoneBookMaui
         {
             InitializeComponent();
             Routing.RegisterRoute("/EditUser",typeof(EditUserPage));
+            Routing.RegisterRoute("Login", typeof(LogINPage));
+
         }
     }
 }

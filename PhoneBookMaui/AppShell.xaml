@@ -19,6 +19,12 @@
             ContentTemplate="{DataTemplate local:AddUserPage}"
             Route="AddUser" />
     </Tab>
+    <!--<ShellContent
+        FlyoutItemIsVisible="False"
+        ContentTemplate="{DataTemplate local:LoadingPage}"
+        Route="LoadingPage">
+       
+    </ShellContent>-->
 
 
 
