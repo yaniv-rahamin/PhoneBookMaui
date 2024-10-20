@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="PhoneBookMaui.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:PhoneBookMaui.view"
+    Title="PhoneBookMaui"
+    >
+    <TabBar></TabBar>
+    <Tab Title="List">
+        <ShellContent
+            Title="List User"
+            ContentTemplate="{DataTemplate local:UserList}"
+            Route="ListUser" />
+        </Tab>
+    <Tab Title="Add User">
+        <ShellContent
+            Title="List User"
+            ContentTemplate="{DataTemplate local:AddUserPage}"
+            Route="AddUser" />
+    </Tab>
+
+
+
+</Shell>
+

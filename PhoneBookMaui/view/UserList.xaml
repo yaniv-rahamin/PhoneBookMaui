@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PhoneBookMaui.view.UserList"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:PhoneBookMaui.model"
+    xmlns:viewModel="clr-namespace:PhoneBookMaui.viewModel"
+    Title="UserList"
+    x:DataType="viewModel:UserListVM">
+    <VerticalStackLayout Padding="0,10,0,0">
+
+        <Entry
+            ClearButtonVisibility="WhileEditing"
+            FlowDirection="RightToLeft"
+            FontSize="15"
+            HorizontalTextAlignment="Center"
+            Placeholder="חפש לפי שם"
+            Text="{Binding SearchText}"
+            WidthRequest="270" />
+
+        <CollectionView
+            
+            EmptyView="רשימה ריקה "
+            ItemsSource="{Binding UsersCollection}"
+            SelectionMode="Single"
+            SelectedItem="{Binding SelectedUser}"
+            SelectionChangedCommand="{Binding EditUserCommand}"
+            >
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:User">
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItem
+                                BackgroundColor="#f8f9f9"
+                                Command="{Binding DeleteComand, Source={x:RelativeSource AncestorType={x:Type viewModel:UserListVM}, Mode=FindAncestorBindingContext}}"
+                                CommandParameter="{Binding .}"
+                                Text="מחיקה" />
+                        </SwipeView.LeftItems>
+                        <Grid
+                            Padding="40,0,100,0"
+                            BackgroundColor="White"
+                            ColumnDefinitions="*,2*"
+                            RowDefinitions="*,*"
+                             >
+
+                            <Border
+                                Grid.RowSpan="2"
+                                HorizontalOptions="Center"
+                                StrokeShape="Ellipse"
+                                StrokeThickness="1">
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding Image}"
+                                    VerticalOptions="Center"
+                                    WidthRequest="50" />
+                            </Border>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,0,0,0"
+                                FontSize="16"
+                                HorizontalOptions="Start"
+                                Text="{Binding FullName}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Margin="0,0,0,0"
+                                FontSize="13"
+                                HorizontalOptions="Start"
+                                Text="{Binding PhoneNumber}"
+                                TextColor="Black"
+                                VerticalOptions="Start" />
+
+
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+
+        </CollectionView>
+
+
+    </VerticalStackLayout>
+</ContentPage>

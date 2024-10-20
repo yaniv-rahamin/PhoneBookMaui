@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PhoneBookMaui.view.EditUserPage"
+             Title="EditUserPage">
+    <VerticalStackLayout Padding="15">
+
+        <Label
+          Margin="0,10,0,0"
+          FlowDirection="RightToLeft"
+          FontAttributes="Bold"
+          FontSize="15"
+          HorizontalOptions="Center"
+          Text="הוסף משתמש"
+          TextColor="Black" />
+
+
+        <Border
+          Margin="0,10,0,0"
+          Padding="5,0"
+          Background="Transparent"
+          HorizontalOptions="Center"
+          Stroke="Black"
+          StrokeThickness="1">
+            <Entry
+              ClearButtonVisibility="WhileEditing"
+              FlowDirection="RightToLeft"
+              FontSize="20"
+              HorizontalTextAlignment="Center"
+              Placeholder="שם פרטי"
+              Text="{Binding Name}"
+              WidthRequest="200" />
+        </Border>
+
+        <Border
+          Margin="0,5,0,0"
+          Padding="5,0"
+          Background="Transparent"
+          HorizontalOptions="Center"
+          Stroke="Black"
+          StrokeThickness="1">
+            <Entry
+              ClearButtonVisibility="WhileEditing"
+              FlowDirection="RightToLeft"
+              FontSize="20"
+              HorizontalTextAlignment="Center"
+              Placeholder="שם משפחה"
+              Text="{Binding FName}"
+              WidthRequest="200" />
+        </Border>
+        <!--<Border
+          Margin="0,5,0,0"
+          Padding="5,0"
+          Background="Transparent"
+          HorizontalOptions="Center"
+          Stroke="Black"
+          StrokeThickness="1">
+          <Entry
+              ClearButtonVisibility="WhileEditing"
+              FlowDirection="RightToLeft"
+              FontSize="20"
+              HorizontalTextAlignment="Center"
+              Placeholder="מייל"
+              Text="{Binding Email}"
+              WidthRequest="200" />
+      </Border>-->
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Border
+              Margin="0,5,1,0"
+              Padding="5,0"
+              Background="Transparent"
+              HorizontalOptions="Center"
+              Stroke="Black"
+              StrokeThickness="1">
+                <Picker
+                  Title="קידומת"
+                  HorizontalTextAlignment="Center"
+                  ItemsSource="{Binding Prefix}"
+                  SelectedItem="{Binding SelectedPrefix}"
+                  WidthRequest="57">
+
+                    <!--<Picker.Items>
+                  <x:String>050</x:String>
+                  <x:String>052</x:String>
+                  <x:String>054</x:String>
+               </Picker.Items>-->
+
+                </Picker>
+
+
+
+            </Border>
+
+            <Border
+              Margin="0,5,0,0"
+              Padding="5,0"
+              Background="Transparent"
+              HorizontalOptions="Center"
+              Stroke="Black"
+              StrokeThickness="1">
+                <Entry
+                  ClearButtonVisibility="WhileEditing"
+                  FlowDirection="RightToLeft"
+                  FontSize="20"
+                  HorizontalTextAlignment="Center"
+                  Keyboard="Numeric"
+                  Placeholder="טלפון"
+                  Text="{Binding PhoneNumber}"
+                  WidthRequest="130" />
+            </Border>
+        </HorizontalStackLayout>
+        <Button
+          Margin="0,10,0,0"
+          BackgroundColor="Transparent"
+          BorderColor="Black"
+          BorderWidth="4"
+          IsEnabled="{Binding HasErrorBtn}"
+          Text="שמור"
+          TextColor="Black"
+          WidthRequest="215" 
+          Command="{Binding AddUserCommand}"/>
+        <Label
+          Margin="0,5,0,0"
+          FlowDirection="RightToLeft"
+          FontAttributes="Bold"
+          FontSize="15"
+          HorizontalOptions="Center"
+          Text="{Binding ErrorMessage} "
+          TextColor="red" />
+
+    </VerticalStackLayout>
+</ContentPage>

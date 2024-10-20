@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PhoneBookMaui.view.SignInPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:PhoneBookMaui.viewModel"
+    Title="SignInPage"
+    x:DataType="models:SignUserVM">
+    <VerticalStackLayout Padding="15" BackgroundColor="AliceBlue">
+
+        <Label
+            Margin="0,35,0,5"
+            FlowDirection="RightToLeft"
+            FontSize="15"
+            HorizontalOptions="Center"
+            Text="ברוך הבא"
+            TextColor="Black" />
+        <Label
+            FlowDirection="RightToLeft"
+            FontAttributes="Bold"
+            FontSize="15"
+            HorizontalOptions="Center"
+            Text="נתחיל עם רישום קצר"
+            TextColor="Black" />
+
+        <Border
+            Margin="0,20,0,0"
+            Padding="5,0"
+            Background="Transparent"
+            HorizontalOptions="Center"
+            Stroke="Black"
+            StrokeThickness="1">
+            <Entry
+                ClearButtonVisibility="WhileEditing"
+                FlowDirection="RightToLeft"
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+                Placeholder="שם פרטי"
+                Text="{Binding Name}"
+                WidthRequest="200" />
+        </Border>
+
+        <Border
+            Margin="0,5,0,0"
+            Padding="5,0"
+            Background="Transparent"
+            HorizontalOptions="Center"
+            Stroke="Black"
+            StrokeThickness="1">
+            <Entry
+                ClearButtonVisibility="WhileEditing"
+                FlowDirection="RightToLeft"
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+                Placeholder="שם משפחה"
+                Text="{Binding FName}"
+                WidthRequest="200" />
+        </Border>
+        <Border
+            Margin="0,5,0,0"
+            Padding="5,0"
+            Background="Transparent"
+            HorizontalOptions="Center"
+            Stroke="Black"
+            StrokeThickness="1">
+            <Entry
+                ClearButtonVisibility="WhileEditing"
+                FlowDirection="RightToLeft"
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+                Placeholder="מייל"
+                Text="{Binding Email}"
+                WidthRequest="200" />
+        </Border>
+        <Border
+            Margin="0,5,0,0"
+            Padding="5,0"
+            Background="Transparent"
+            HorizontalOptions="Center"
+            Stroke="Black"
+            StrokeThickness="1">
+            <Entry
+                ClearButtonVisibility="WhileEditing"
+                FlowDirection="RightToLeft"
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+                IsPassword="True"
+                Placeholder="סיסמא"
+                Text="{Binding Password}"
+                WidthRequest="200" />
+        </Border>
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Border
+                Margin="0,5,1,0"
+                Padding="5,0"
+                Background="Transparent"
+                HorizontalOptions="Center"
+                Stroke="Black"
+                StrokeThickness="1">
+                <Picker
+                    Title="קידומת"
+                    HorizontalTextAlignment="Center"
+                    ItemsSource="{Binding Prefix}"
+                    SelectedItem="{Binding SelectedPrefix}"
+                    WidthRequest="57">
+
+                    <!--<Picker.Items>
+                       <x:String>050</x:String>
+                       <x:String>052</x:String>
+                       <x:String>054</x:String>
+                    </Picker.Items>-->
+
+                </Picker>
+
+
+
+            </Border>
+
+            <Border
+                Margin="0,5,0,0"
+                Padding="5,0"
+                Background="Transparent"
+                HorizontalOptions="Center"
+                Stroke="Black"
+                StrokeThickness="1">
+                <Entry
+                    ClearButtonVisibility="WhileEditing"
+                    FlowDirection="RightToLeft"
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
+                    Placeholder="טלפון"
+                    Text="{Binding PhoneNumber}"
+                    WidthRequest="130" />
+            </Border>
+        </HorizontalStackLayout>
+        <Button
+            Margin="0,10,0,0"
+            BackgroundColor="Transparent"
+            BorderColor="Black"
+            BorderWidth="4"
+            IsEnabled="{Binding HasErrorBtn}"
+            Text="שמור"
+            TextColor="Black"
+            WidthRequest="215" />
+        <Label
+            Margin="0,5,0,0"
+            FlowDirection="RightToLeft"
+            FontAttributes="Bold"
+            FontSize="15"
+            HorizontalOptions="Center"
+            Text="{Binding ErrorMessage}"
+            TextColor="red" />
+
+    </VerticalStackLayout>
+</ContentPage>
