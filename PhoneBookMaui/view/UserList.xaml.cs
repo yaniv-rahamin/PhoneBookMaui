@@ -4,10 +4,10 @@ namespace PhoneBookMaui.view;
 
 public partial class UserList : ContentPage
 {
-	public UserList()
+	public UserList(UserListVM vm)
 	{
 		InitializeComponent();
-		BindingContext = new UserListVM();
+		BindingContext = vm;
 
 	}
 }

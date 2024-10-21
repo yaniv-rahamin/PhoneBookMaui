@@ -10,7 +10,7 @@ using System.Windows.Input;
 namespace PhoneBookMaui.viewModel
 {
     [QueryProperty(nameof(EditUser),"EdUser")]
-    class EditUserVM : ObservableObject
+    public class EditUserVM : ObservableObject
     {
         private string? name;
         private string? fName;
@@ -20,7 +20,7 @@ namespace PhoneBookMaui.viewModel
         private bool hasErrorBtn;
         public List<string> Prefix { get; set; }
         private string? selectedPrefix;
-        private User editUser;
+        private User? editUser;
         
 
 
@@ -113,16 +113,16 @@ namespace PhoneBookMaui.viewModel
             get => editUser;
             set { 
                 if (editUser != value) 
-                { 
+                {
                     editUser = value;
                     Name = editUser.Name;
                     FName = editUser.FName;
-                    SelectedPrefix = editUser.PhoneNumber.Substring(0,3);
+                    SelectedPrefix = editUser.PhoneNumber.Substring(0, 3);
                     PhoneNumber = editUser.PhoneNumber.Substring(3);
                     OnPropertyChanged(Name);
                     OnPropertyChanged(fName);
                     OnPropertyChanged(PhoneNumber);
-                    OnPropertyChanged(SelectedPrefix);    
+                    OnPropertyChanged(SelectedPrefix);
 
                 } 
             }

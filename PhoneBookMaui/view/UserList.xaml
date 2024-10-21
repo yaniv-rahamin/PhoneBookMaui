@@ -32,7 +32,7 @@
                         <SwipeView.LeftItems>
                             <SwipeItem
                                 BackgroundColor="#f8f9f9"
-                                Command="{Binding DeleteComand, Source={x:RelativeSource AncestorType={x:Type viewModel:UserListVM}, Mode=FindAncestorBindingContext}}"
+                                Command="{Binding DeleteCommand, Source={x:RelativeSource AncestorType={x:Type viewModel:UserListVM}, Mode=FindAncestorBindingContext}}"
                                 CommandParameter="{Binding .}"
                                 Text="מחיקה" />
                         </SwipeView.LeftItems>

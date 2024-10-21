@@ -6,26 +6,29 @@ namespace PhoneBookMaui
 {
     public partial class App : Application
     {
-        //public static User? user;
+        public static User? user;
+        IServiceProvider provider;
 
-        public App()
+        public App(IServiceProvider serviceProvider)
         {
             InitializeComponent();
+            provider = serviceProvider; 
             MainPage = new AppShell();
-            //if(Preferences.Default.ContainsKey("userObj"))
-            //{
-            //    string json = Preferences.Default.Get<string>("UserObj",null);
-            //    user = JsonSerializer.Deserialize<User>(json);
-            //}
-            //if (user != null)
-            //{
-            //    Shell.Current.GoToAsync("//ListUser");
-            //}
-            //else 
-            //{
-            //    Shell.Current.GoToAsync("Login");
-            //}
-                 
+            if (Preferences.Default.ContainsKey("userObj"))
+            {
+                string json = Preferences.Default.Get<string>("userObj", null);
+                user = JsonSerializer.Deserialize<User>(json);
+            }
+            if (user != null)
+            {
+                Shell.Current.GoToAsync("//ListUser");
+            }
+            else
+            {
+                Page login = provider.GetService<LogINPage>();
+                Shell.Current.Navigation.PushModalAsync(login);
+            }
+
         }
 
          

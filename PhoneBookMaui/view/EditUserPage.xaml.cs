@@ -4,9 +4,9 @@ namespace PhoneBookMaui.view;
 
 public partial class EditUserPage : ContentPage
 {
-	public EditUserPage()
+	public EditUserPage(EditUserVM vm)
 	{
 		InitializeComponent();
-		BindingContext = new EditUserVM();
+		BindingContext = vm;
 	}
 }

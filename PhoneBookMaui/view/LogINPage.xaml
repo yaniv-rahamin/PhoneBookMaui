@@ -4,8 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewModel="clr-namespace:PhoneBookMaui.viewModel"
-    x:DataType="viewModel:LogInVM"
-    Title="LogINPage">
+    Title="LogINPage"
+    x:DataType="viewModel:LogInVM">
     <VerticalStackLayout>
         <Label
             Margin="0,35,0,5"
@@ -63,7 +63,8 @@
             IsEnabled="{Binding HasErrorBtn}"
             Text="שמור"
             TextColor="Black"
-            WidthRequest="215" />
+            WidthRequest="215" 
+            Command="{Binding LogInCommand}"/>
         <Label
             Margin="0,5,0,0"
             FlowDirection="RightToLeft"
@@ -72,5 +73,17 @@
             HorizontalOptions="Center"
             Text="{Binding ErrorMessage}"
             TextColor="red" />
+        <Label Margin="0,10,0,0" HorizontalOptions="Center" FlowDirection="RightToLeft" >
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span FontAttributes="None" FontSize="15" Text="אין לך עדין חשבון? " TextColor="Black" />
+                    <Span FontAttributes="Bold" FontSize="15" Text="הרשמה" TextColor="Black" />
+                </FormattedString>
+            </Label.FormattedText>
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding RegisterCommand}" />
+            </Label.GestureRecognizers>
+        </Label>
+
     </VerticalStackLayout>
 </ContentPage>

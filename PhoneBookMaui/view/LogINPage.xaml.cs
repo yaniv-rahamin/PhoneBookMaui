@@ -4,9 +4,9 @@ namespace PhoneBookMaui.view;
 
 public partial class LogINPage : ContentPage
 {
-	public LogINPage()
+	public LogINPage(LogInVM vm)
 	{
 		InitializeComponent();
-		BindingContext = new LogInVM();
+		BindingContext = vm;
 	}
 }

@@ -5,26 +5,28 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:PhoneBookMaui.view"
     Title="PhoneBookMaui"
+    
     >
-    <TabBar></TabBar>
-    <Tab Title="List">
+   
+    <FlyoutItem>
+        <Tab Title="user list">
         <ShellContent
             Title="List User"
             ContentTemplate="{DataTemplate local:UserList}"
             Route="ListUser" />
         </Tab>
-    <Tab Title="Add User">
-        <ShellContent
-            Title="List User"
+        <Tab Title="add user">
+            <ShellContent
+            Title="Add User"
             ContentTemplate="{DataTemplate local:AddUserPage}"
             Route="AddUser" />
-    </Tab>
-    <!--<ShellContent
-        FlyoutItemIsVisible="False"
-        ContentTemplate="{DataTemplate local:LoadingPage}"
-        Route="LoadingPage">
-       
-    </ShellContent>-->
+         </Tab>
+
+    </FlyoutItem>
+    
+    <MenuItem IconImageSource="dotnet_bot.png"
+       Text="Logout"
+       Command="{Binding LogoutCommand}" />
 
 
 

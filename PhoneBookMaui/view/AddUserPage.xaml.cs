@@ -5,9 +5,9 @@ namespace PhoneBookMaui.view;
 
 public partial class AddUserPage : ContentPage
 {
-	public AddUserPage()
+	public AddUserPage(AddUserVM vm)
 	{
 		InitializeComponent();
-		BindingContext = new AddUserVM();
+		BindingContext =vm;
 	}
 }

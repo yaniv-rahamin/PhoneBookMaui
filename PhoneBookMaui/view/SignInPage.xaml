@@ -142,7 +142,8 @@
             IsEnabled="{Binding HasErrorBtn}"
             Text="שמור"
             TextColor="Black"
-            WidthRequest="215" />
+            WidthRequest="215" 
+            Command="{Binding UserRegisterCommand}"/>
         <Label
             Margin="0,5,0,0"
             FlowDirection="RightToLeft"

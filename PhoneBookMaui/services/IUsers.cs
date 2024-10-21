@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PhoneBookMaui.model;
+
 namespace PhoneBookMaui.services
-{
-    internal interface IUsers
+{ 
+    public interface IUsers
     {
-        List<User>? GetUsers();//החזרת רשימה האנשים
-        bool AddUser(User user);
-        bool DeleteUser(User user);
-        bool EditUser(User user);
-        List<User>? FindUserByName(Predicate<string> condition);            
+        public List<User>? GetUsers();//החזרת רשימה האנשים
+        public bool AddUser(User user);
+        public bool DeleteUser(User user);
+        public bool EditUser(User user);
+        public List<User>? FindUserByName(Predicate<string> condition);            
     }
 }

@@ -9,7 +9,7 @@ using PhoneBookMaui.model;
 
 namespace PhoneBookMaui.viewModel
 {
-    class AddUserVM :ObservableObject
+    public class AddUserVM :ObservableObject
     {
         private string? name;
         private string? fName;

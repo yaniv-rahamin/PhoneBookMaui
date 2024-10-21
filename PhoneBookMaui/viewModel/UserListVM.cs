@@ -16,22 +16,22 @@ namespace PhoneBookMaui.viewModel
 
     [QueryProperty(nameof(User), "user")]
     [QueryProperty(nameof(EdUser), "eduser")]
-    internal class UserListVM : ObservableObject
+    public class UserListVM : ObservableObject
     {
         private string? name;
         private ObservableCollection<User>? usersCollection;
         private List<User>? usersList;
-        private UserService? userService;
+        private IUsers? userService;
         private User? user;
         private string? searchText;
         private User? selectedUser;
         private User? edUser;
         
 
-        public UserListVM()
+        public UserListVM(IUsers service)
         {
 
-            userService = new UserService();
+            userService = service;
             usersList = userService.GetUsers();
 
             usersCollection = new ObservableCollection<User>();
@@ -124,9 +124,9 @@ namespace PhoneBookMaui.viewModel
                 foreach (User user in usersList)
                     usersCollection.Add(user);
                 OnPropertyChanged(nameof(UsersCollection));
-                SelectedUser = null;
+              
             }
-            
+
         }
 
         private void FilterUsers(string? searchText)
@@ -150,6 +150,7 @@ namespace PhoneBookMaui.viewModel
             Dictionary<string, object> data = new Dictionary<string, object>();
             data.Add("EdUser", SelectedUser);
             await Shell.Current.GoToAsync("/EditUser",data);
+             
             
         }
 

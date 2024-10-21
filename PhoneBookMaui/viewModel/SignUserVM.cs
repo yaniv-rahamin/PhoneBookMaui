@@ -1,13 +1,14 @@
-﻿ 
+﻿
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
- 
+using System.Windows.Input;
+
 namespace PhoneBookMaui.viewModel
 {
-    internal class SignUserVM:ObservableObject
+    public class SignUserVM:ObservableObject
     {
         private string? name;
         private string? fName;
@@ -19,12 +20,23 @@ namespace PhoneBookMaui.viewModel
         public List<string>Prefix {  get; set; }
         private string? selectedPrefix;
 
+        public ICommand? UserRegisterCommand { get; set; }
+
         public SignUserVM()
         {
             Prefix = new List<string>();
             Prefix.Add("050");
             Prefix.Add("052");
             Prefix.Add("054");
+
+            UserRegisterCommand = new Command(async () => await RegAndToLogin());
+        }
+
+        private async Task RegAndToLogin()
+        {
+            Preferences.Default.Set("mail",email);  
+            Preferences.Default.Set("password", password);
+            await Shell.Current.GoToAsync("Login");
         }
 
         public string SelectedPrefix 

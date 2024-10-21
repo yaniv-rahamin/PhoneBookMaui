@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PhoneBookMaui.services
 {
-    internal class UserService : IUsers
+    public class UserService : IUsers
     {
         
         private List<User>? users;

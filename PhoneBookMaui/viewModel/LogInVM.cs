@@ -3,21 +3,58 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Xml.Linq;
+using PhoneBookMaui.model;
 
 namespace PhoneBookMaui.viewModel
 {
-    internal class LogInVM : ObservableObject
+    public class LogInVM : ObservableObject
     {
         private string? email;
         private string? password;
         private string? errorMessage;
+        
+
+        public ICommand? RegisterCommand { get; set; }
+        public ICommand? LogInCommand { get; set; }  
 
         public LogInVM()
         {
+            LogInCommand = new Command(async() => await LoginToApp());
+            RegisterCommand = new Command(async () => await NavigateToReg());
 
+        }
+
+        private async Task LoginToApp()
+        {
+            
+            string mail = Preferences.Default.Get<string>("mail", null);
+            string savepassword = Preferences.Default.Get<string>("password", null);
+            User user = new User()
+            { 
+                Email = mail,
+                Password = savepassword,    
+            };
+
+
+            if (email == mail && savepassword == password)
+            {
+                App.user = user;
+                Preferences.Default.Set<string>("userObj", JsonSerializer.Serialize(user));    
+                await Shell.Current.GoToAsync("///ListUser");
+            }
+            else
+                await Shell.Current.DisplayAlert("Login", "Login Faild!", "ok");
+
+        }
+
+        private async Task NavigateToReg()
+        {
+            await Shell.Current.GoToAsync("RegisterPage");
         }
 
         public string Email
